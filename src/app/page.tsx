@@ -1,9 +1,11 @@
 import { PostType } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
-
+import { config } from "@/lib/config";
+// APIのURL
+const url = config.apiPrefix + config.apiHost + "/api/blog";
 async function fetchAllBlogs() {
-  const res = await fetch("http://localhost:3000/api/blog", {
+  const res = await fetch(url, {
     cache: "no-store", //SSR　//SSGは"force-cache"
   });
 

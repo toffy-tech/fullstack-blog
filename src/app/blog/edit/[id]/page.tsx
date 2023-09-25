@@ -2,6 +2,7 @@
 import { useRouter } from "next/navigation";
 import React, { useEffect, useRef } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import { config } from "@/lib/config";
 
 const editBlog = async (
   title: string | undefined,
@@ -19,7 +20,9 @@ const editBlog = async (
 };
 
 const getBlogById = async (id: number) => {
-  const res = await fetch(`http://localhost:3000/api/blog/${id}`);
+  // APIのURL
+  const url = config.apiPrefix + config.apiHost + "api/blog/" + id;
+  const res = await fetch(`http://127.0.0.1:3000/api/blog/${id}`);
   const data = await res.json();
   console.log(data);
   return data.post;

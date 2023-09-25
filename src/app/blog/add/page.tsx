@@ -3,12 +3,16 @@
 import { useRouter } from "next/navigation";
 import React, { useRef } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import { config } from "@/lib/config";
+
+// APIのURL
+const url = config.apiPrefix + config.apiHost + "api/blog/";
 
 const postBlog = async (
   title: string | undefined,
   description: string | undefined
 ) => {
-  const res = await fetch("http://localhost:3000/api/blog", {
+  const res = await fetch(url, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
