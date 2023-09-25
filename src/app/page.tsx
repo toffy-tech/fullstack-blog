@@ -9,8 +9,12 @@ async function fetchAllBlogs() {
     cache: "no-store", //SSR　//SSGは"force-cache"
   });
 
-  const data = await res.json();
-  return data.posts;
+  try {
+    const data = await res.json();
+    return data.post;
+  } catch(error) {
+    console.log(error)
+  }
 }
 
 export default async function Home() {

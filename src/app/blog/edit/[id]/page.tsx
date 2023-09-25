@@ -23,9 +23,12 @@ const getBlogById = async (id: number) => {
   // APIのURL
   const url = config.apiPrefix + config.apiHost + "api/blog/" + id;
   const res = await fetch(`http://127.0.0.1:3000/api/blog/${id}`);
-  const data = await res.json();
-  console.log(data);
-  return data.post;
+  try {
+    const data = await res.json();
+    return data.post;
+  } catch(error) {
+    console.log(error)
+  }
 };
 
 const EditPost = ({ params }: { params: { id: number } }) => {
