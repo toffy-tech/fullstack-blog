@@ -19,7 +19,11 @@ const postBlog = async (
     },
     body: JSON.stringify({ title, description }),
   });
-  return res.json();
+  try {
+    return res.json();
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const PostBlog = () => {

@@ -8,12 +8,11 @@ async function fetchAllBlogs() {
   const res = await fetch(url, {
     cache: "no-store", //SSR　//SSGは"force-cache"
   });
-
-  try {
+  try{
     const data = await res.json();
-    return data.post;
-  } catch(error) {
-    console.log(error)
+    return data.posts;
+  }catch (error) {
+    console.log(error);
   }
 }
 
